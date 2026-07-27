@@ -1,0 +1,79 @@
+<div class="app-layout">
+  <aside class="app-sidebar" [class.closed]="!menuOpen">
+    <p-menu [model]="model" styleClass="sidebar-menu">
+      <ng-template #start>
+        <span class="px-5 d-flex align-items-center py-5">
+          <h4>Logo</h4>
+        </span>
+      </ng-template>
+
+      <ng-template #submenuheader let-item>
+        <span class="text-secondary" style="font-size: smaller">{{ item.label }}</span>
+      </ng-template>
+
+      <ng-template #item let-item>
+        <a pRipple [routerLink]="item.routerLink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+          class="link-menu">
+          <span [class]="item.icon"></span>
+          <span class="ms-2 menu-text">{{ item.label }}</span>
+        </a>
+      </ng-template>
+    </p-menu>
+  </aside>
+
+  <main class="app-content">
+    <div class="top-menu">
+      <div class="d-flex flex-row gap-2 align-items-center">
+        <button (click)="onToggleMenu()" class="btn-toggle-menu px-3">
+          <i class="bi bi-layout-sidebar"></i>
+        </button>
+
+        <div class="store-select-wrapper">
+          <i class="pi pi-shop store-select-icon"></i>
+
+          <p-select [options]="stores" optionLabel="name" placeholder="Selecione a loja" class="store-select" />
+        </div>
+      </div>
+
+      <div class="d-flex flex-row w-100 align-items-center justify-content-center">
+        <p-iconfield class="search-iconfield">
+          <p-inputicon class="pi pi-search" />
+          <input type="text" placeholder="Buscar pedidos, produtos, clientes.." class="search-input" />
+        </p-iconfield>
+      </div>
+
+      <div class="d-flex flex-row gap-2">
+        <button class="btn btn-without-border rounded-circle">
+          <i class="pi pi-bell"></i>
+        </button>
+
+        @if (darkMode) {
+        <button (click)="onToggleTheme()" class="btn btn-without-border rounded-circle">
+          <i class="pi pi-sun"></i>
+        </button>
+        } @else {
+        <button (click)="onToggleTheme()" class="btn btn-without-border rounded-circle">
+          <i class="pi pi-moon"></i>
+        </button>
+        }
+
+        <div class="user-info">
+          <p-button type="button" text [label]="userName" (onClick)="op.toggle($event)" />
+          <p-popover #op>
+            <div class="d-flex flex-column">
+              <div class="p-2">
+                <span style="font-size: small; font-weight: bold"> {{ userName }} </span>
+
+                <p style="font-size: x-small">{{ userRole }}</p>
+              </div>
+              <button class="link-menu btn-without-border">Configurações</button>
+
+              <button class="link-menu btn-without-border btn-logout">Sair</button>
+            </div>
+          </p-popover>
+        </div>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </main>
+</div>

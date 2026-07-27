@@ -1,0 +1,148 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100vh;
+  background-color: var(--background);
+
+  &.closed {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+
+    .menu-text {
+      display: none;
+    }
+
+    .link-menu {
+      display: flex;
+      justify-content: center;
+      width: 50px;
+    }
+
+    .link-menu.active,
+    .link-menu:hover {
+      width: 50px;
+    }
+  }
+}
+
+.top-menu {
+  display: flex;
+  background-color: var(--background);
+  height: 45px;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn-toggle-menu {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--primary);
+    }
+  }
+}
+
+.store-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.store-select {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  align-items: center;
+  border: none;
+}
+
+.store-select-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.search-iconfield {
+  display: flex;
+  width: 70%;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.app-content {
+  flex: 1;
+  overflow: auto;
+  background-color: var(--background);
+}
+
+.link-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: var(--text-color);
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.link-menu.active,
+.link-menu:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.app-sidebar.closed .menu-text {
+  display: none;
+}
+
+.app-sidebar.closed .menu-text {
+  display: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  border-radius: 8px;
+  white-space: nowrap;
+  background-color: transparent;
+}
+
+.btn-logout {
+  color: red;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+:host ::ng-deep {
+  .sidebar-menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  } 
+  .store-select .p-select-label {
+    padding-left: 2rem !important;
+  }
+
+  .p-button-label {
+    color: var(--foreground) !important;
+  }
+}

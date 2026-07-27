@@ -1,0 +1,8 @@
+<div class="w-100">
+    <button (onClick)="onClick()" class="btn btn-primary">
+        @if (iconName) {
+            <i class="{{convertIconName(iconName)}}" style="font-size: 12px; font-weight: bolder;"></i>
+        }
+        <span class="px-2 text-primary">{{ label }}</span>
+    </button>
+</div>

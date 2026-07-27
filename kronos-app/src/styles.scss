@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@use './styles/theme';
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background) !important;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+span, p, h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: small;
+}
+
+p-floatlabel {
+  width: 100% !important;
+
+  input {
+    width: 100%  !important;
+    border-radius: 7px !important;
+    background-color: var(--background) !important;
+    border: 1px solid var(--border) !important;
+    height: 38px !important;
+  }
+
+  &:has(input:focus) label {
+    color: var(--primary) !important;
+  }
+}
+
+.search-iconfield {
+  display: flex !important;
+  height: 30px !important;
+  border-radius: 5px !important;
+}
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.card {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+.search-input {
+  width: 100%;
+  align-items: center;
+  padding-left: 40px;
+  background-color: var(--background);
+  border: 1px solid var(--text-primary);
+  border-radius: 7px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--primary-glow) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.btn-without-border {
+  border: none;
+  background-color: transparent;
+  color: var(--text-primary);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--primary-glow) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

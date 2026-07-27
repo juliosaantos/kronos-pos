@@ -1,0 +1,30 @@
+.card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 24px rgba(242, 138, 92, 0.25);
+}
+
+.rounded-letter {
+  font-size: large;
+  font-weight: bolder;
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+}
+
+.small-icon {
+    font-size: small;
+    color: var(--text-secondary);
+}

@@ -1,0 +1,86 @@
+/* =======================================================
+   KRONOS THEME
+   ======================================================= */
+
+:root {
+  /* Backgrounds */
+  --background: #faf8f5;
+  --foreground: #2d2926;
+
+  --card: #ffffff;
+  --sidebar: #2d2926;
+
+  /* Brand */
+  --primary: #e85d2c;
+  --primary-glow: #f28a5c;
+
+  /* UI */
+  --secondary: #f0eeeb;
+  --muted: #f2f0ed;
+  --accent: #ede8e2;
+  --border: #e0dcd8;
+
+  /* Status */
+  --success: #2cb85e;
+  --warning: #e6a23c;
+  --info: #2c8ae8;
+  --destructive: #d93838;
+
+  /* Text */
+  --text-primary: var(--foreground);
+  --text-secondary: #6c757d;
+
+  /* Layout */
+  --sidebar-background: var(--sidebar);
+  --sidebar-foreground: #ffffff;
+
+  /* Effects */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+/* =======================================================
+   DARK THEME
+   ======================================================= */
+
+.dark-theme {
+  /* Backgrounds */
+  --background: #18181b;
+  --foreground: #f2f0ed;
+
+  --card: #22262d;
+  --sidebar: #16191e;
+
+  /* Brand */
+  --primary: #ed6b3a;
+  --primary-glow: #f59a70;
+
+  /* UI */
+  --secondary: #2e333b;
+  --muted: #2a2e35;
+  --accent: #3e3833;
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Status */
+  --success: #38d66e;
+  --warning: #f0b44a;
+  --info: #3a9cf0;
+  --destructive: #e84545;
+
+  /* Text */
+  --text-primary: var(--foreground);
+  --text-secondary: #b4b4b4;
+
+  /* Layout */
+  --sidebar-background: var(--sidebar);
+  --sidebar-foreground: #ffffff;
+
+  /* Effects */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+}

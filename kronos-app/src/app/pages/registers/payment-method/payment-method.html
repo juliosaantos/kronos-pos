@@ -1,0 +1,45 @@
+<div class="p-4">
+  <div class="d-flex flex-row justify-content-between">
+    <div>
+      <h3>Formas de Pagamento</h3>
+      <span>Habilite as formas aceitas no PDV e delivery.</span>
+    </div>
+
+    <app-button label="Nova Forma" iconName="plus" (click)="openModal()"></app-button>
+  </div>
+
+  <div class="d-flex flex-row flex-wrap mt-3 gap-3">
+    <div class="card col-lg-4 col-md-5 col-sm-12 p-3 my-3" *ngFor="let paymentMethod of paymentMethodList">
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <span>{{ paymentMethod.name }}</span>
+
+          <p-toggle-switch class="ml-auto" [(ngModel)]="paymentMethod.isActive" (ngModelChange)="onChangeStatus(paymentMethod)" ></p-toggle-switch>
+        </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog [header]="isEditMode ? 'Editar Forma de pagamento' : 'Nova Forma de Pagamento'" [modal]="true" [(visible)]="modalOpen" [style]="{ width: '25rem' }">
+  <form [formGroup]="formGroup">
+    <div class="d-flex flex-column gap-3 justify-content-center align-items-center">
+      <p-floatlabel variant="on" class="mt-2">
+        <input pInputText type="text" formControlName="name" [invalid]="formGroup.get('name')?.invalid && formGroup.get('name')?.touched" />
+        <label for="on_label">Nome *</label>
+      </p-floatlabel>
+
+      <p-floatlabel variant="on">
+        <p-select formControlName="type" [options]="paymentMethodTypeOptions" optionLabel="label" optionValue="value" class="w-100" [invalid]="formGroup.get('type')?.invalid && formGroup.get('type')?.touched"></p-select>
+        <label for="on">Tipo *</label>
+      </p-floatlabel>
+
+      <div class="d-flex flex-row gap-2 align-items-center">
+        <label>Status</label>
+        <p-toggleswitch formControlName="isActive"></p-toggleswitch>
+      </div>
+    </div>
+  </form>
+  <div class="d-flex flex-row justify-content-center gap-3 mt-5 pt-5">
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+  </div>
+</p-dialog>

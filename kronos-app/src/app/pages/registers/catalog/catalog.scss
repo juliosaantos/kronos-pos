@@ -1,0 +1,57 @@
+.search-iconfield {
+  width: 40%;
+}
+
+.status-active {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid var(--success);
+  padding: 0 10px;
+  color: var(--success) !important;
+  font-size: 12px !important;
+
+}
+
+.status-inactive {
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 0 10px;
+  color: var(--destructive);
+  border: 1px solid var(--destructive) !important;
+  font-size: 12px !important;
+}
+
+.card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 24px rgba(242, 138, 92, 0.25);
+}
+
+.span-price {
+  font-size: large;
+  font-weight: bolder;
+  color: var(--primary);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: small;
+  cursor: pointer;
+}
+
+.img-area {
+  width: 80px;
+  height: 80px;
+}
+
+

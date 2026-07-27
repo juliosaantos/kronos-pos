@@ -1,0 +1,184 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ENUMS ##
+enum UserRole {
+  OWNER
+  ADMIN
+  MANAGER
+  USER
+  CASHIER
+  KITCHEN
+}
+
+enum PaymentMethodType {
+  CREDIT_CARD
+  DEBIT_CARD
+  PIX
+  CASH
+}
+
+enum OrderType {
+  DELIVERY
+  PICKUP
+  DINE_IN
+}
+
+enum OrderStatus {
+  ACCEPTED
+  PENDING
+  IN_PROGRESS
+  READY
+  DELIVERED
+  CANCELED
+}
+
+// MODELS ##
+
+model User {
+  id Int @id @default(autoincrement())
+  firebaseUid String @unique
+  name String
+  email String @unique
+  photoUrl String @default("")
+  isActive Boolean @default(true)
+}
+
+model Tenant {
+  id Int @id @default(autoincrement())
+  name String
+  slug String @unique
+  document String
+  phone String
+  email String
+  logoUrl String
+  isActive Boolean @default(true)
+}
+
+model TenantUsers {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  userId Int
+  role UserRole
+  isActive Boolean @default(true)
+}
+
+model TenantSettings {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  openingTime String
+  closingTime String
+  allowDelivery Boolean
+  allowPickup Boolean
+  allowDineIn Boolean
+}
+
+model PaymentMethod {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  name String
+  type PaymentMethodType
+  isActive Boolean @default(true)
+}
+
+model Neighborhoods { 
+  id Int @id @default(autoincrement())
+  tenantId Int
+  name String
+  deliveryFee Int
+  estimatedDeliveryTime Int
+  isActive Boolean @default(true)
+  customers Customers[]
+}
+
+model Categories {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  name String
+  description String
+  order Int
+  isActive Boolean @default(true)
+}
+
+model Products {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  categoryId Int
+  name String
+  description String
+  price Decimal  @db.Decimal(10, 2)
+  imageUrl String
+  isAvailable Boolean @default(true)
+}
+
+model ProductsOptions {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  productId Int
+  name String
+  price Decimal
+  isAvailable Boolean @default(true)
+}
+
+model Customers {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  firstName String
+  lastName String
+  phone String
+  email String
+  document String
+  neighborhoodId Int
+  neighborhood Neighborhoods @relation(fields: [neighborhoodId], references: [id])
+  address String
+  number String
+  complement String
+  reference String
+  isActive Boolean @default(true)
+}
+
+model Orders {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  customerId Int
+  orderNumber Int
+  type OrderType
+  status OrderStatus
+  paymentMethodId Int
+  subtotal Decimal
+  discount Decimal
+  total Decimal
+  deliveryFee Decimal
+  notes String
+  createdByUserId Int
+}
+
+model OrderItems {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  orderId Int
+  productId Int
+  productName String
+  quantity Int
+  unitPrice Decimal
+  total Decimal
+  notes String
+}
+
+model OrderItemsOptions {
+  id Int @id @default(autoincrement())
+  tenantId Int
+  orderItemId Int
+  productOptionId Int
+  productOptionName String
+  unitPrice Decimal
+  quantity Int
+  total Decimal
+}

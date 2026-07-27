@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Products" ALTER COLUMN "price" SET DATA TYPE DECIMAL(65,30);
+
+-- AlterTable
+ALTER TABLE "ProductsOptions" ALTER COLUMN "price" SET DATA TYPE DECIMAL(65,30);
